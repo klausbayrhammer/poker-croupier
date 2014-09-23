@@ -69,6 +69,7 @@ Currently supported languages:
 - [Perl](http://github.com/ferki/poker-player-perl)
 - [PHP](http://github.com/lean-poker/poker-player-php)
 - [Python](https://github.com/lean-poker/poker-player-python)
+- [R](https://github.com/chochkov/poker-player-R) (Under review)
 - [Ruby](http://github.com/lean-poker/poker-player-ruby)
 - [Scala](https://github.com/klausbayrhammer/poker-player-scala) (Under review)
 
