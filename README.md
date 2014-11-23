@@ -3,7 +3,7 @@ poker-croupier
 
 [![Build Status](https://travis-ci.org/lean-poker/poker-croupier.png?branch=master)](https://travis-ci.org/lean-poker/poker-croupier) [![Code Climate](https://codeclimate.com/github/lean-poker/poker-croupier.png)](https://codeclimate.com/github/lean-poker/poker-croupier) [![Code Coverage](https://codeclimate.com/github/lean-poker/poker-croupier/coverage.png)](https://codeclimate.com/github/lean-poker/poker-croupier) [![Dependency Status](https://gemnasium.com/lean-poker/poker-croupier.png)](https://gemnasium.com/lean-poker/poker-croupier)
 
-Robot poker croupier for lean poker tournaments, an event much like a code retreat, but with a slightly different format and purpose.
+Robot poker croupier for lean poker tournaments, an event much like a coderetreat, but with a slightly different format and purpose.
 
 Twitter: https://twitter.com/LeanPoker
 
@@ -11,15 +11,13 @@ Facebook: https://www.facebook.com/leanpoker
 
 ## The purpose
 
-A lean poker tournament's aim is for participants to practice concepts related to lean start ups and continuous deployment. A poker team is a small group of developers (ideally 4 people forming 2 pairs) whose aim is to incrementally build a highly heuristic algorithm within a one day time frame that is just smart enough to beat the other robots. Professional poker robots are developed for years, so the purpose is definitely not to come up with something really smart, but to be the smartest among the current competitors. With this in mind teams can come up with simple-to-implement heuristics, examine their effect on game play during training rounds, and then improve their algorithm in a similar, lean fashion.
+A lean poker tournament's aim is for participants to practice concepts related to lean start ups and continuous deployment. A poker team is a small group of developers (ideally 4 people forming 2 pairs) whose aim is to incrementally build a highly heuristic algorithm within a one day time frame that is just smart enough to beat the other robots. Professional poker robots are developed for years, so the purpose is definitely not to come up with something really smart, but to be the smartest among the current competitors. With this in mind teams can come up with simple-to-implement heuristics, examine their effect on game play, and then improve their algorithm in a similar, lean fashion.
 
 ## The format
 
-Since only a few lean poker tournaments have been organized so far, the format has not been finalized. Everything below is more of a draft. Please feel free to contribute your thoughts.
+The robots are continuously playing sit'n'go tournaments during the whole day from the minute the teams are formed. When the team pushes new code to their master branch on github, it will be automatically deployed into production. 
 
-The robots are continuously playing sit'n'go tournaments during the whole day. Between tournaments the croupier will automatically deploy the latest commit from the each team's master branch.
-
-The teams have 60 minute sessions when they are allowed to code. After each session there is a break, during which the last game that was played by the robots is shown on a projector. This is the part where the teams can root for their robots. After the break there is a quick retrospective stand up meeting that looks back on the previous session.
+The teams have 60 minute sessions when they are allowed to code. After each session there is a break, during which some highlights of the games played by the robots are shown on a projector. Before the break there is a quick retrospective stand up meeting that looks back on the previous session.
 
 ### Videos
 
@@ -39,7 +37,7 @@ One of the most important rules is that there is no explicit prize for the winne
 
 Another important rule is fair play: no one should try to exploit weaknesses of the framework, or deliberately inject back doors into its source code. Also - with some notable exceptions listed below - no team should use any pre-written code.
 
-As with any code retreat like event: provide a free lunch but avoid pizza.
+As with any coderetreat like event: provide a free lunch but avoid pizza.
 
 ### Notes on the usage of 3rd party code and fair play
 
@@ -51,7 +49,7 @@ For a library to qualify for the below exceptions, it should be publicly availab
 
 - The folding player provided for each language.
 - In the case of C++ the Boost library is allowed, since otherwise C++ would be handicapped against languages like Java and python that have more potent standard libraries. Similarly in other languages where the standard library is small - like JavaScript - public packages are allowed as long as they are reasonably general purpose.
-- If in doubt, then the team should ask the other teams if they allow them to use a particular library. In the name of fair play, other teams should allow the usage of the library if it does not give the other team an unfair advantage.
+- If in doubt, then the team should ask the other teams if they allow them to use a particular library. In the name of fair play, other teams should allow the usage of the library if it does not give the other team an unfair advantage. In situations of a debate among teams, the facilitator should try to settle it, or as a last resort make a decision.
 
 # How to write a player
 
