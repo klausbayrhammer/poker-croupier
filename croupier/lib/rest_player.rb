@@ -50,7 +50,7 @@ class Croupier::RestPlayer
   private
 
   def send_request(message)
-    Croupier::HttpRequestLight.post(@url, message) do |error, response|
+    Croupier::HttpRequestLight.post(@url, message, 2) do |error, response|
       if error
         if response[:code] == 0
           Croupier::logger.error "Player #{name} is unreachable: '#{response[:message]}'"

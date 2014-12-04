@@ -24,7 +24,7 @@ class RunGameWorker
 
     result = {ranking: players_ranking_json, log: JSON.generate(controller.logger.logs)}
 
-    Croupier::HttpRequestLight.post response_url, result, 5 do |error, response|
+    Croupier::HttpRequestLight.post response_url, result, 15 do |error, response|
       if error
         raise Exception.new('Failed to deliver response to: '+ response_url)
       end

@@ -15,7 +15,7 @@ class Croupier::HttpRequestLight
   end
 
   class << self
-    def post(url, message, time_out = 0.5, &block)
+    def post(url, message, time_out, &block)
       self.new(url).post(message, time_out, &block)
     end
   end
