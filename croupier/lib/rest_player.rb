@@ -15,7 +15,7 @@ class Croupier::RestPlayer
 
   def bet_request(game_state)
     send_request action: 'bet_request', game_state: game_state.to_json  do |error, result|
-      if error
+      if error || !(result =~ /\A\d+\z/)
         raise Croupier::PlayerUnreachable.new
       end
 
@@ -52,7 +52,7 @@ class Croupier::RestPlayer
   def send_request(message)
     Croupier::HttpRequestLight.post(@url, message, 2) do |error, response|
       if error
-        if response[:code] == 0
+        if response[:code].to_i == 0
           Croupier::logger.error "Player #{name} is unreachable: '#{response[:message]}'"
           yield true, nil if block_given?
         else
