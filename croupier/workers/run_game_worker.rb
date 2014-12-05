@@ -1,4 +1,5 @@
 require 'sidekiq'
+require 'timeout'
 require_relative '../croupier'
 
 class RunGameWorker
@@ -13,20 +14,22 @@ class RunGameWorker
       controller.register_rest_player player['name'], player['url']
     end
 
-    players_ranking = controller.start_sit_and_go
+    Timeout::timeout(120) do
+      players_ranking = controller.start_sit_and_go
 
-    players_ranking_json = JSON.generate(players_ranking.map do |player|
-      {
-          name: player.name,
-          version: player.version
-      }
-    end)
+      players_ranking_json = JSON.generate(players_ranking.map do |player|
+        {
+            name: player.name,
+            version: player.version
+        }
+      end)
 
-    result = {ranking: players_ranking_json, log: JSON.generate(controller.logger.logs)}
+      result = {ranking: players_ranking_json, log: JSON.generate(controller.logger.logs)}
 
-    Croupier::HttpRequestLight.post response_url, result, 15 do |error, response|
-      if error
-        raise Exception.new('Failed to deliver response to: '+ response_url)
+      Croupier::HttpRequestLight.post response_url, result, 15 do |error, response|
+        if error
+          raise Exception.new('Failed to deliver response to: '+ response_url)
+        end
       end
     end
 
