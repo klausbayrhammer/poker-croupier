@@ -90,7 +90,7 @@ class Croupier::SitAndGo::State
   def data
     {
       players: @players.each_with_index.map { |player, index| player.data.merge({ id: index }) },
-      small_blind: @small_blind,
+      small_blind: small_blind,
       orbits: @orbits,
       dealer: @dealers_position
     }
