@@ -28,6 +28,7 @@ install_package git
 install_package curl
 
 if ! [ -f /usr/local/rvm/scripts/rvm ]; then
+    curl -sSL https://rvm.io/mpapis.asc | sudo gpg --import -
     curl -L https://get.rvm.io | bash -s stable --ruby=2.1.0
 
     echo "" >> /etc/bashrc
