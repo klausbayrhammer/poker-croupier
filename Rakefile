@@ -1,5 +1,3 @@
-#require 'cucumber'
-#require 'cucumber/rake/task'
 require 'rspec/core/rake_task'
 
 
@@ -8,11 +6,6 @@ task :test => [:'test:spec']
 
 desc "Run RSpec code examples (options: RSPEC_SEED=seed)"
 task :spec => :'test:spec'
-
-desc "Runs the thrift compiler to refresh generated code of service end points"
-task :thrift do
-  ruby "rake/thrift_compiler.rb"
-end
 
 namespace :test do
 
@@ -26,4 +19,12 @@ namespace :test do
     task.rspec_opts << " --seed #{ENV['RSPEC_SEED']}" if ENV['RSPEC_SEED']
   end
 
+end
+
+task :rerun_sinatra do
+  system 'rerun --pattern="**/*.{rb,js,css,scss,sass,erb,html,haml,ru,mustache}" -- rackup -p 1635'
+end
+
+task :rerun_sidekiq do
+  system 'rerun --pattern="**/*.{rb,js,css,scss,sass,erb,html,haml,ru,mustache}" -- bundle exec sidekiq -r ./croupier/app.rb'
 end

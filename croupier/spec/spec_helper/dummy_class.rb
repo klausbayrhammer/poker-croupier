@@ -3,7 +3,7 @@ class SpecHelper::DummyClass
 
   end
 
-  def respont_to?(method)
+  def respond_to?(method, include_private = false)
     true
   end
 end

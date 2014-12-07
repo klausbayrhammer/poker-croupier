@@ -1,27 +1,30 @@
 $:.push(File.join(File.dirname(__FILE__), 'lib/api'))
 $:.push(File.join(File.dirname(__FILE__)))
 
-require 'thrift'
-require_relative 'lib/api/croupier'
+require 'logger'
+require 'delegate_all'
 
 module Croupier
 
   autoload :Deck, 'lib/deck'
-  autoload :GameRunner, 'lib/game_runner'
-  autoload :GameState, 'lib/game_state'
-  autoload :GameSteps, 'lib/game_steps'
-  autoload :Handler, 'lib/handler'
+  autoload :Game, 'lib/game'
+  autoload :HttpRequestLight, 'lib/http_request_light'
+  autoload :LogHandler, 'lib/log_handler'
+  autoload :Tournament, 'lib/tournament'
   autoload :Player, 'lib/player'
-  autoload :PlayerStrategy, 'lib/player_strategy'
-  autoload :PlayerBuilder, 'lib/player_builder'
-  autoload :Spectator, 'lib/spectator'
-  autoload :SpectatorBuilder, 'lib/spectator_builder'
-  autoload :ThriftEntityGateway, 'lib/thrift_entity_gateway'
-  autoload :ThriftObserver, 'lib/thrift_observer'
+  autoload :PlayerUnreachable, 'lib/player_unreachable'
+  autoload :RandomPlayer, 'lib/random_player'
+  autoload :RestPlayer, 'lib/rest_player'
+  autoload :SitAndGo, 'lib/sit_and_go'
 
   class << self
+    attr_accessor :log_file
+
     def logger
-      @logger ||= Logger.new(STDOUT)
+      @logger ||= Croupier::LogHandler::MultiLogger.new(
+          Logger.new("#{log_file}.log"),
+          Logger.new(STDOUT)
+      )
     end
   end
 end

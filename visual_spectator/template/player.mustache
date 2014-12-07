@@ -1,0 +1,16 @@
+<div class="panel panel-default player-panel">
+    <div class="panel-heading">
+        <h3 class="panel-title player-name" title="{{version}}">
+            <a href='log?log={{log}}'>{{name}}</a>
+        </h3>
+        <h3 class="panel-title"><span class="label label-default">{{stack}} €</span></h3>
+    </div>
+    <div class="panel-body hole-cards">
+        {{#card}}
+            <div class="card {{suit}}">{{rank}}</div>
+        {{/card}}
+    </div>
+    <div class="panel-footer">
+        Current status:<br/><span class="label {{status_style}} status">{{status}}</span>
+    </div>
+</div>
