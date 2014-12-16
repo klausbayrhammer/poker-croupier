@@ -197,6 +197,15 @@ describe Croupier::SitAndGo::State do
       it "should return the tournament state" do
         expect(subject.data).to eq({players: [], small_blind: 10, orbits: 0, dealer: 0})
       end
+
+      it "should return the tournament state for later orbits" do
+        game_state = SpecHelper::MakeTournamentState.with(
+            players: [fake_player, fake_player],
+        )
+        6.times { game_state.next_round! }
+
+        expect(game_state.data).to eq({:players=>[{:name=>"FakePlayer", :stack=>1000, :status=>"active", :bet=>0, :hole_cards=>[], :version=>nil, :id=>0}, {:name=>"FakePlayer", :stack=>1000, :status=>"active", :bet=>0, :hole_cards=>[], :version=>nil, :id=>1}], :small_blind=>20, :orbits=>3, :dealer=>0})
+      end
     end
 
     context "when a player is added" do
