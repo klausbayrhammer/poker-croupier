@@ -9,15 +9,21 @@ Twitter: https://twitter.com/LeanPoker
 
 Facebook: https://www.facebook.com/leanpoker
 
-## The purpose
+## What is Lean Poker?
 
-A lean poker tournament's aim is for participants to practice concepts related to lean start ups and continuous deployment. A poker team is a small group of developers (ideally 4 people forming 2 pairs) whose aim is to incrementally build a highly heuristic algorithm within a one day time frame that is just smart enough to beat the other robots. Professional poker robots are developed for years, so the purpose is definitely not to come up with something really smart, but to be the smartest among the current competitors. With this in mind teams can come up with simple-to-implement heuristics, examine their effect on game play, and then improve their algorithm in a similar, lean fashion.
+A lot of companies have jumped on the Lean Startup band wagon lately, but many struggle with implementing the tight feedback loops it builds on. The purpose of Lean Poker, is to generate an artificial environment where developers can quickly experiment with continous delivery and other practices that help with thightinging the feedback loop. Durring the day, you will learn how to achieve a build measure learn cycle on the order of mere minutes.
 
-## The format
+Our problem domain is building a poker robot that plays sit'n'gos of Texsas Holdem, but don't worry, you don't need to know the rules of poker, we will explain what you need to know. (Also: no real money is involved.) The catch is that the robots start playing against each other the minute teams start coding. From that moment on, every few seconds the robots will play a sit'n'go, and the two winners are awarded points. This means that every few seconds you either gain on the other teams or loose. This puts enourmous preasure on teams to deploy as often and as soon as possible. 
 
-The robots are continuously playing sit'n'go tournaments during the whole day from the minute the teams are formed. When the team pushes new code to their master branch on github, it will be automatically deployed into production. 
+Professional poker robots are developed for years, so the purpose is definitely not to come up with something really smart, but to be the smartest among the current competitors. With this in mind teams can come up with simple-to-implement heuristics, examine their effect on game play, and then improve their algorithm in a similar, lean fashion.
 
-The teams have 60 minute sessions when they are allowed to code. After each session there is a break, during which some highlights of the games played by the robots are shown on a projector. Before the break there is a quick retrospective stand up meeting that looks back on the previous session.
+Teams will be formed at the start of the day. The teams have 60 minute sessions when they are allowed to code. After each session there is a break, during which some highlights of the games played by the robots are shown on a screen. Before the break there is a quick retrospective stand up meeting that looks back on the previous session.
+
+What you will need: 
+- A laptop 
+- Compiler / Interpreter for your favourite language
+- A good editor or IDE
+- Optionally: your favourite keyboard and mouse, so that you feel confortable while coding
 
 ### Videos
 
