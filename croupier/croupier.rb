@@ -21,10 +21,7 @@ module Croupier
     attr_accessor :log_file
 
     def logger
-      @logger ||= Croupier::LogHandler::MultiLogger.new(
-          Logger.new("#{log_file}.log"),
-          Logger.new(STDOUT)
-      )
+      @logger ||= Logger.new(STDOUT)
     end
   end
 end
