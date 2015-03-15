@@ -3,6 +3,9 @@ require 'json'
 
 require 'sidekiq/web'
 
+require 'autoscaler/sidekiq'
+require 'autoscaler/heroku_scaler'
+
 require_relative 'croupier'
 require_relative 'workers/run_game_worker'
 
@@ -13,6 +16,12 @@ Sidekiq.configure_client do |config|
       :url => ENV['REDISCLOUD_URL'],
       :namespace => 'LeanPokerCroupier'
   }
+
+  unless ENV['HEROKU_API_KEY'].empty?
+    config.client_middleware do |chain|
+      chain.add Autoscaler::Sidekiq::Client, 'default' => Autoscaler::HerokuScaler.new
+    end
+  end
 end
 
 Sidekiq.configure_server do |config|
@@ -20,6 +29,12 @@ Sidekiq.configure_server do |config|
       :url => ENV['REDISCLOUD_URL'],
       :namespace => 'LeanPokerCroupier'
   }
+
+  unless ENV['HEROKU_API_KEY'].empty?
+    config.server_middleware do |chain|
+      chain.add(Autoscaler::Sidekiq::Server, Autoscaler::HerokuScaler.new, 240) # 240 second timeout
+    end
+  end
 end
 
 post '/game' do

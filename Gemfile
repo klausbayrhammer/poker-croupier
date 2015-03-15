@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'autoscaler'
 gem 'rspec'
 gem 'rack'
 gem 'rack-test'
