@@ -12,7 +12,7 @@ gem 'mustache'
 gem 'poker-ranking'
 gem 'delegate-all'
 gem 'rerun'
-gem 'sidekiq'
+gem 'sidekiq', '~> 2.2.1'
 gem 'twitter'
 
 gem "codeclimate-test-reporter", group: :test, require: nil
