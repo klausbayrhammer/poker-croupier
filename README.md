@@ -47,15 +47,7 @@ As with any coderetreat like event: provide a free lunch but avoid pizza.
 
 ### Notes on the usage of 3rd party code and fair play
 
-We would like to avoid a situation where one team has a huge advantage over the others due to a library that solves some part of the problem. For that reason the rule of thumb is that only the language's standard library, and general purpose open source libraries are allowed.
-
-#### Exceptions
-
-For a library to qualify for the below exceptions, it should be publicly available and opensource. Proprietary libraries are banned under all conditions.
-
-- The folding player provided for each language.
-- In the case of C++ the Boost library is allowed, since otherwise C++ would be handicapped against languages like Java and python that have more potent standard libraries. Similarly in other languages where the standard library is small - like JavaScript - public packages are allowed as long as they are reasonably general purpose.
-- If in doubt, then the team should ask the other teams if they allow them to use a particular library. In the name of fair play, other teams should allow the usage of the library if it does not give the other team an unfair advantage. In situations of a debate among teams, the facilitator should try to settle it, or as a last resort make a decision.
+We would like to avoid a situation where one team has a huge advantage over the others due to a library that solves some part of the problem. For that reason the rule of thumb is that only the language's standard library, and open source libraries are allowed. Similarly, only opensource data files can be used. Proprietary libraries and files are banned under all conditions.
 
 # How to write a player
 
@@ -89,14 +81,11 @@ The players are simple REST services. You should have the following files:
 - A file, usually called player\_service, that will take care of routing the requests to an object called player. The current game state sent as a POST variable named game\_state in JSON format. The game\_state needs to be decoded into a dynamic structure. The action POST variable specifies which function of the player is to be called. (Currently the only action is bet_request.)
 - The other file is usually called player, and contains a Player class (or equivalent structure in languages where there are no classes) with a single bet_request function, that returns 0.
 
-Furthermore you should have the following files that the deployment script will use:
-- start.sh - It should start your service.
-- stop.sh - It should stop the service.
-- config.yml - It should contain the URL on which your service can be accessed when it's running.
+The service should run out of the box when it is pushed to Heroku. If Heroku does not support your choice of language, and it is not possible to create a custom build pack, then it is possible to use a custom deployer service. It should implement the same interface as the [Hermes service](https://github.com/lean-poker/hermes)
 
 # How to get started as a contributor
 
-Check the [issues section](https://github.com/devill/poker-croupier/issues) for current tasks. We also have a [mailing list at Google groups](https://groups.google.com/forum/?hl=en#!forum/poker-croupier-developers). To understand the project structure, read the [architectural guide](https://github.com/devill/poker-croupier/wiki/Architectural-guide).
+Check the [issues section](https://github.com/devill/poker-croupier/issues) for current tasks. 
 
 When implementing rules, consult the Texas Hold'em rules in [English](http://www.pokerstars.com/poker/games/texas-holdem/) or  [Hungarian](http://www.pokerstars.hu/poker/games/texas-holdem/) and poker hand ranks in [English](http://www.pokerstars.com/poker/games/rules/hand-rankings/) or [Hungarian](http://www.pokerstars.hu/poker/games/rules/hand-rankings/)  pages on PokerStars. We wish to play sit-n-go tournaments of No Limit Texas Hold'em.
 
@@ -105,34 +94,4 @@ Helpful links
 - [Poker gameplay and terminology](http://en.wikipedia.org/wiki/Category:Poker_gameplay_and_terminology)
 - [Poker tournament](http://en.wikipedia.org/wiki/Poker_tournament)
 
-## Setting up your development environment
 
-- Clone the git repo
-- Install [rvm](http://rvm.io/) and ruby 2.1.0: `\curl -L https://get.rvm.io | bash -s stable --ruby=2.1.0`
-- Install bundler: `gem install bundler`
-- Install necessary gems with bundler: `bundle`
-- Test your environment by running the unit tests: `rake test`
-
-And that's it! You are all set to go.
-
-## Running the application
-
-At this point we do not yet have rake targets or integration tests that can help in taking the services for a spin. That means that, although there are tests for each service, after changes it's worth running a manual sanity check. The way I do it now: `bundle exec ruby croupier/scripts/integration_test.rb`
-
-If you wish to hold a poker tournament then there is another script - `croupier/script/start_tournament.rb` - that you can modify and run. It lets you specify the log file, hosts and ports for each player.
-
-In order to start the ranking service use `ruby ranking_service/ranking_service.rb`. (Note that the ranking service is automatically started by the croupier when a tournament is started.)
-
-## Watching the results
-
-During gameplay the croupier collects all game related data and serializes it into the `log/` directory. You can replay any of them with the visual spectator. Just start it:
-
-    bundle exec ruby visual_spectator/app.rb -p 2000
-
-[Bon appetite](http://localhost:2000).
-
-### Previous events
-
-If you wish to watch games from previous events, you can download the logs from [the previous events page on leanpoker.org](http://leanpoker.org/previous_events/). Just unpack the archive, and copy it's contents into your log directory.
-
-The visual spectator is not entirely backwards compatible, so you may have issues watching some of the first few games. You can either revert to an earlier version of poker-croupier, or try to migrate the files. If you do migrate them, then please send the migrated files to [DeVill](https://github.com/devill) so that the archive can be updated.
