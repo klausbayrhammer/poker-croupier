@@ -83,9 +83,7 @@ The players are simple REST services. You should have the following files:
 
 The service should run out of the box when it is pushed to Heroku. If Heroku does not support your choice of language, and it is not possible to create a custom build pack, then it is possible to use a custom deployer service. It should implement the same interface as the [Hermes service](https://github.com/lean-poker/hermes)
 
-# How to get started as a contributor
-
-Check the [issues section](https://github.com/devill/poker-croupier/issues) for current tasks. 
+# Links
 
 When implementing rules, consult the Texas Hold'em rules in [English](http://www.pokerstars.com/poker/games/texas-holdem/) or  [Hungarian](http://www.pokerstars.hu/poker/games/texas-holdem/) and poker hand ranks in [English](http://www.pokerstars.com/poker/games/rules/hand-rankings/) or [Hungarian](http://www.pokerstars.hu/poker/games/rules/hand-rankings/)  pages on PokerStars. We wish to play sit-n-go tournaments of No Limit Texas Hold'em.
 
