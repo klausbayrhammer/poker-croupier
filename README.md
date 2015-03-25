@@ -22,6 +22,7 @@ Currently supported languages:
 - [PHP](http://github.com/lean-poker/poker-player-php)
 - [Python](https://github.com/lean-poker/poker-player-python)
 - [Ruby](http://github.com/lean-poker/poker-player-ruby)
+- [Scala](https://github.com/klausbayrhammer/poker-player-scala)
 
 Languages that need update to become supported:
 - [C#](https://github.com/peitor/poker-player-csharp) (Needs update to work with mono)
@@ -29,7 +30,6 @@ Languages that need update to become supported:
 - [Haskell](https://github.com/lean-poker/poker-player-haskell)
 - [Perl](http://github.com/ferki/poker-player-perl)
 - [R](https://github.com/chochkov/poker-player-R)
-- [Scala](https://github.com/klausbayrhammer/poker-player-scala)
 
 The language frameworks above need to be updated to be Heroku ready. If you can push it to Heroku, and it works out of the box, then it can be added to supported languages. 
 
