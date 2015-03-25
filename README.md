@@ -33,13 +33,7 @@ Languages that need update to become supported:
 
 The language frameworks above need to be updated to be Heroku ready. If you can push it to Heroku, and it works out of the box, then it can be added to supported languages. 
 
-### How to create a folding player
-
-The players are simple REST services. You should have the following files:
-- A file, usually called player\_service, that will take care of routing the requests to an object called player. The current game state sent as a POST variable named game\_state in JSON format. The game\_state needs to be decoded into a dynamic structure. The action POST variable specifies which function of the player is to be called. (Currently the only action is bet_request.)
-- The other file is usually called player, and contains a Player class (or equivalent structure in languages where there are no classes) with a single bet_request function, that returns 0.
-
-The service should run out of the box when it is pushed to Heroku. If Heroku does not support your choice of language, and it is not possible to create a custom build pack, then it is possible to use a custom deployer service. It should implement the same interface as the [Hermes service](https://github.com/lean-poker/hermes)
+If you would like to port the player to a new language read the ["How to port the poker player to a new language"](https://github.com/lean-poker/poker-croupier/wiki/How-to-port-the-poker-player-to-a-new-language) wiki page!
 
 # Links
 
