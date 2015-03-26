@@ -22,7 +22,7 @@ Currently supported languages:
 - [PHP](http://github.com/lean-poker/poker-player-php)
 - [Python](https://github.com/lean-poker/poker-player-python)
 - [Ruby](http://github.com/lean-poker/poker-player-ruby)
-- [Scala](https://github.com/klausbayrhammer/poker-player-scala)
+- [Scala](https://github.com/lean-poker/poker-player-scala)
 
 Languages that need update to become supported:
 - [C#](https://github.com/peitor/poker-player-csharp) (Needs update to work with mono)
